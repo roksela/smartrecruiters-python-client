@@ -45,26 +45,20 @@ import smartrecruiters_python_client
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
-import time
 import smartrecruiters_python_client
 from smartrecruiters_python_client.rest import ApiException
-from pprint import pprint
 
 # Configure API key authorization: key
 smartrecruiters_python_client.configuration.api_key['x-smarttoken'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# smartrecruiters_python_client.configuration.api_key_prefix['x-smarttoken'] = 'Bearer'
 # create an instance of the API class
-api_instance = smartrecruiters_python_client.AnalyticsApi()
-date_format = 'yyyy-MM-dd'T'HH:mm:ss' # str | Defines response date format (optional) (default to yyyy-MM-dd'T'HH:mm:ss)
+jobs_api = smartrecruiters_python_client.JobsApi()
 
 try:
-    # Get the list of applications.
-    api_response = api_instance.analytics_applications(date_format=date_format)
-    pprint(api_response)
+    # Get the list of jobs.
+    jobs = jobs_api.jobs_all()
+    print(jobs.total_found)
 except ApiException as e:
-    print("Exception when calling AnalyticsApi->analytics_applications: %s\n" % e)
+    print("Exception when calling JobsApi->jobs_all: %s\n" % e)
 
 ```
 
